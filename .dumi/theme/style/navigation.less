@@ -1,0 +1,49 @@
+@import url("./color.less");
+
+.layout-header-logo {
+  img {
+    height: 50px;
+  }
+}
+
+.layout-header {
+  position: sticky;
+  top: 0px;
+  float: left;
+  width: 100%;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  background-color: #fff;
+  z-index: 99;
+
+  &:after {
+    visibility: hidden;
+    display: block;
+    height: 0;
+    content: " ";
+    font-size: 0;
+    clear: both;
+  }
+
+  .layout-header-link {
+    float: left;
+    height: 40px;
+    padding: 5px 40px 5px 0;
+    color: @text-color;
+    line-height: 40px;
+    text-align: center;
+    font-weight: 600;
+
+    &:hover {
+      color: @active-color;
+    }
+
+    transition: all 0.8s linear;
+  }
+
+  .actived {
+    color: @active-color;
+  }
+}

@@ -1,0 +1,159 @@
+@import url("./color.less");
+
+
+
+.card-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 10px 0 20px;
+  border-bottom: 1px solid #eee;
+  color: #999;
+  line-height: 1.5;
+  font-size: 14px;
+
+  // 标签
+  .tag-wrapper {
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 5px;
+    color: @active-color;
+    font-size: 12px;
+
+    .tag-item {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      height: 30px;
+      margin-right: 10px;
+      padding-left: 30px;
+      padding-right: 10px;
+      background: #f6f6f6;
+      border-radius: 15px;
+      line-height: 30px;
+
+      .tag-icon {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        overflow: hidden;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: @active-color;
+        border-radius: 50%;
+        color: #fff;
+        line-height: 20px;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      &:nth-of-type(1) {
+        color: @yellow;
+
+        .tag-icon {
+          background-color: @yellow;
+        }
+      }
+
+      &:nth-of-type(2) {
+        color: @green;
+
+        .tag-icon {
+          background-color: @green;
+        }
+      }
+
+      &:nth-of-type(3) {
+        color: @red;
+
+        .tag-icon {
+          background-color: @red;
+        }
+      }
+
+      &:nth-of-type(4) {
+        color: @active-color;
+
+        .tag-icon {
+          background-color: @active-color;
+        }
+      }
+    }
+  }
+
+
+  // 标题
+  h2 {
+    margin-bottom: 10px;
+    color: #454545;
+    line-height: 1.5;
+    font-size: 16px;
+    cursor: pointer;
+    padding-left: 6px;
+
+    &:hover {
+      color: @active-color;
+    }
+  }
+
+  // 描述
+  .article-card-describe {
+    overflow: hidden;
+    padding-left: 6px;
+    display: -webkit-box;
+    margin-bottom: 15px;
+    color: #666;
+    line-height: 1.5;
+    font-size: 14px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    &:hover {
+      color: @active-color;
+    }
+  }
+
+  .article-content-img {
+    .article-detail {
+      width: 78%;
+    }
+  }
+
+  // 时间和浏览次数
+  .article-other-info {
+    display: inline-block;
+    color: #999;
+    font-size: 12px;
+    padding-left: 6px;
+
+    span {
+      margin-right: 10px;
+
+      i {
+        color: @active-color;
+      }
+    }
+
+    .info-view {
+      color: @active-color;
+    }
+  }
+
+  // 右侧图片
+  .artical-image {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    overflow: hidden;
+    width: 140px;
+    height: 100px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    transform: translateY(-50%);
+
+    img {
+      width: 100%;
+    }
+  }
+}
