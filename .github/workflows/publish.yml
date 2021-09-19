@@ -1,4 +1,4 @@
-name: Publish And Deploy Demo # 自动部署的名称
+name: 发布内容到服务器 # 自动部署的名称
 on:
   push:
     - branch: main
@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@master
       - run: npm install # 安装第三方包
       - run: npm run build:docs # 打包
-      - run: tar docs-dist
+      - run: tar -zcvf release.tgz docs-dist
         # 把.nuxt、nuxt.config.js等文件，打包压缩为release.tgz
 
       # 第三步：发布 Release
