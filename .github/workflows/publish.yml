@@ -26,22 +26,24 @@ jobs:
       #     release_name: Release ${{ github.sha }}
       #     draft: false # 是否是草稿
       #     prerelease: false # 是否是预发布
-      - name: set ssh key # 临时设置 ssh key
-      run: |
-        mkdir -p ~/.ssh/
-        echo "${{secrets.ID_RSA}}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan ${{secrets.HOST}} >> ~/.ssh/known_hosts
+      
+      - name: set ssh key 
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{secrets.ID_RSA}}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan ${{secrets.HOST}} >> ~/.ssh/known_hosts
+          
       - name: scp test files # 拷贝测试页面，到远程服务器
         run: |
-        currentBranchName=`git branch | awk '$1 == "*"{print $2}'`
+          currentBranchName=`git branch | awk '$1 == "*"{print $2}'`
 
-        ## 将该文件夹，及其所有文件，上传到服务器
-        echo current branch name is: $currentBranchName
-        ssh root@${{secrets.HOST}} "rm -rf /www/wwwroot/demo"
-        scp -r docs-dist/ root@${{secrets.HOST}}:www/wwwroot/demo
-    - name: delete ssh key # 删除 ssh key
-      run: rm -rf ~/.ssh/id_rsa
+           ## 将该文件夹，及其所有文件，上传到服务器
+          echo current branch name is: $currentBranchName
+          ssh root@${{secrets.HOST}} "rm -rf /www/wwwroot/demo"
+          scp -r docs-dist/ root@${{secrets.HOST}}:www/wwwroot/demo
+      - name: delete ssh key # 删除 ssh key
+        run: rm -rf ~/.ssh/id_rsa
       # - name: 上传构建结果到 Release（把打包的tgz上传到Release）
       #   id: upload-release-asset
       #   uses: actions/upload-release-asset@master
