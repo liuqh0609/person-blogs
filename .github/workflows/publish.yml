@@ -7,8 +7,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest # 运行环境，告诉它运行在什么环境
     steps: # 步骤
-      # 第一步：下载源码（CI/CD拉取代码到自己的本地）
-      - name: Checkout
+      - name: 下载源码
         uses: actions/checkout@master
 
       - name: 打包构建
@@ -17,36 +16,57 @@ jobs:
       - run: npm run docs:build # 打包
       - run: tar -zcvf release.tgz docs-dist
 
-      - name: 发布 Release
-        id: create_release
-        uses: actions/create-release@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.BLOG_DEPLOY_TOKEN }} # 之前GitHub添加的Token
-        with:
-          tag_name: ${{ github.sha }} # (tag)标签名称
-          release_name: Release ${{ github.sha }}
-          draft: false # 是否是草稿
-          prerelease: false # 是否是预发布
+      # - name: 发布 Release
+      #   id: create_release
+      #   uses: actions/create-release@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.BLOG_DEPLOY_TOKEN }} # 之前GitHub添加的Token
+      #   with:
+      #     tag_name: ${{ github.sha }} # (tag)标签名称
+      #     release_name: Release ${{ github.sha }}
+      #     draft: false # 是否是草稿
+      #     prerelease: false # 是否是预发布
+      - name: set ssh key # 临时设置 ssh key
+      run: |
+        mkdir -p ~/.ssh/
+        echo "${{secrets.ID_RSA}}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan ${{secrets.HOST}} >> ~/.ssh/known_hosts
+      - name: scp test files # 拷贝测试页面，到远程服务器
+        run: |
+          # ## 获取当前分支名称，并创建一个同名的文件夹
+          # currentBranchName=`git branch | awk '$1 == "*"{print $2}'`
+          # mkdir $currentBranchName
 
-      - name: 上传构建结果到 Release（把打包的tgz上传到Release）
-        id: upload-release-asset
-        uses: actions/upload-release-asset@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.BLOG_DEPLOY_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # 上传地址，通过创建Release获取到的
-          asset_path: ./release.tgz # 要上传文件
-          asset_name: release.tgz # 上传后的文件名
-          asset_content_type: application/x-tgz
+          # ## 将 dist examples 移到刚创建的文件夹之内
+          # mv docs-dist/ $currentBranchName/dist/
+          # mv examples/ $currentBranchName/examples/
 
-      - name: 部署到服务器
-        uses: appleboy/ssh-action@master # 使用ssh链接服务器
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd /www/wwwroot/demo/
-            wget https://github.com/liuqh0609/dumi-blog/releases/latest/download/release.tgz -O release.tgz
-            tar zxvf release.tgz
+        ## 将该文件夹，及其所有文件，上传到服务器
+        echo current branch name is: $currentBranchName
+        ssh root@${{secrets.HOST}} "rm -rf /www/wwwroot/demo"
+        scp -r docs-dist/ root@${{secrets.HOST}}:www/wwwroot/demo
+    - name: delete ssh key # 删除 ssh key
+      run: rm -rf ~/.ssh/id_rsa
+      # - name: 上传构建结果到 Release（把打包的tgz上传到Release）
+      #   id: upload-release-asset
+      #   uses: actions/upload-release-asset@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.BLOG_DEPLOY_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # 上传地址，通过创建Release获取到的
+      #     asset_path: ./release.tgz # 要上传文件
+      #     asset_name: release.tgz # 上传后的文件名
+      #     asset_content_type: application/x-tgz
+
+      # - name: 部署到服务器
+      #   uses: appleboy/ssh-action@master # 使用ssh链接服务器
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     password: ${{ secrets.PASSWORD }}
+      #     port: ${{ secrets.PORT }}
+      #     script: |
+      #       cd /www/wwwroot/demo/
+      #       wget https://github.com/liuqh0609/dumi-blog/releases/latest/download/release.tgz -O release.tgz
+      #       tar zxvf release.tgz
