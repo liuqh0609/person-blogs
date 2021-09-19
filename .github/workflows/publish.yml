@@ -37,4 +37,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           scp_source: ./docs-dist/
-          scp_target: /www/wwwroot/demo/
+          scp_target: /blog/
