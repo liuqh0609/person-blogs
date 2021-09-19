@@ -38,6 +38,6 @@ jobs:
           scp_source: ./docs-dist/
           scp_target: /blog/
           before_script: |
-            cd /blog
+            mkdir blog && cd /blog
             shopt -s  extglob
             rm -rf !(.user.ini)
