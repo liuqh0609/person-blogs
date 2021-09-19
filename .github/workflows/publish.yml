@@ -38,5 +38,6 @@ jobs:
           scp_source: ./docs-dist/
           scp_target: /blog/
           before_script: |
-            chattr -i .user.ini
-            rm -rf /blog/
+            cd /blog
+            shopt -s  extglob
+            rm -rf !(.user.ini)
