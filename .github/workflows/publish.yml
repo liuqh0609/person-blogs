@@ -15,7 +15,7 @@ jobs:
       - name: Build
         uses: actions/setup-node@master
       - run: npm install # 安装第三方包
-      - run: npm run build:docs # 打包
+      - run: npm run docs:build # 打包
       - run: tar docs-dist
         # 把.nuxt、nuxt.config.js等文件，打包压缩为release.tgz
 
