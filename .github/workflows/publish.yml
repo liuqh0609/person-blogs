@@ -38,4 +38,5 @@ jobs:
           scp_source: ./docs-dist/
           scp_target: /blog/
           before_script: |
+            chattr -i .user.ini
             rm -rf /blog/
