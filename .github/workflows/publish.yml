@@ -35,9 +35,8 @@ jobs:
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          scp_source: ./docs-dist/
-          scp_target: /blog/
+          scp_source: ./docs-dist
+          scp_target: /blog
           before_script: |
             mkdir blog && cd /blog
-            shopt -s  extglob
-            rm -rf !(.user.ini)
+            shopt -s  extglob && rm -rf !(.user.ini)
