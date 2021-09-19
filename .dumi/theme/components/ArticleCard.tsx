@@ -29,6 +29,11 @@ const HomeList = ({ source }) => {
       <Title title="最近更新" />
       {source?.map((item) => {
         if (item.path !== '/' && item.path.includes('文章')) {
+          console.log(
+            '%c 🍟 item: ',
+            'font-size:20px;background-color: #33A5FF;color:#fff;',
+            item,
+          );
           return (
             <div key={item.path} className="card-wrapper">
               <div className="tag-wrapper">
