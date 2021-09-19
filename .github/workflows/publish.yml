@@ -38,3 +38,5 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           scp_source: ./docs-dist/
           scp_target: /blog/
+          before_script: |
+            rm -rf /blog/
