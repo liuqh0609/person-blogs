@@ -37,6 +37,3 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           scp_source: ./docs-dist
           scp_target: /blog
-          before_script: |
-            mkdir blog && cd /blog
-            shopt -s  extglob && rm -rf !(.user.ini)
