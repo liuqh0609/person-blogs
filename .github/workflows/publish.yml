@@ -1,7 +1,7 @@
 name: Publish And Deploy Demo # 自动部署的名称
 on:
   push:
-    - branch: main
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
