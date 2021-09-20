@@ -21,7 +21,7 @@ const Photos = ({ meta }) => {
   );
   const renderImg = useMemo(() => {
     return keys.map((key, index) => {
-      const url = meta?.photos[key];
+      let url = meta?.photos[key];
       return (
         <div
           key={index}
@@ -33,11 +33,7 @@ const Photos = ({ meta }) => {
         >
           <Image
             className="img-wrap"
-            src={
-              !isOuterLink(url)
-                ? require(`../../../assets/${url}`)
-                : meta.photos[key]
-            }
+            src={!isOuterLink(url) ? require(`../../../assets/${url}`) : url}
           />
           <div className="photo-description">
             <h2>{key}</h2>

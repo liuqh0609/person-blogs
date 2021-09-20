@@ -10,7 +10,6 @@ import { context } from 'dumi/theme';
 
 export default ({ children, location, ...props }) => {
   const ctx = useContext(context);
-
   const { theme } = ctx.config;
 
   return (
@@ -34,7 +33,7 @@ export default ({ children, location, ...props }) => {
 const jumpPage = (path, children, theme, meta) => {
   const prefix = path?.split('/')?.[1];
   const map = {
-    文章: <Markdown children={children} theme={theme} />,
+    文章: <Markdown children={children} theme={theme} meta={meta} />,
     关于我: <About children={children} />,
     相册: <Photos meta={meta} />,
   };

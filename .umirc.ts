@@ -8,6 +8,12 @@ export default defineConfig({
   theme: {
     config: '61',
   },
+  links: [
+    {
+      rel: 'stylesheet',
+      href: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.css',
+    },
+  ],
   metas: [
     {
       // 解决语雀图片防盗链

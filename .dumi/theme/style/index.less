@@ -1,8 +1,10 @@
 .layout_wrapper {
-  width: 60vw;
+  width: 50vw;
   min-height: 60px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
 }
 
 // 样式初始化
@@ -10,7 +12,7 @@ body {
   height: 100vh;
   font: 14px/1.5 "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: #fff;
+  background-color: #F2F2F2;
 }
 
 
@@ -54,5 +56,11 @@ div:focus {
     content: " ";
     clear: both;
     height: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .layout_wrapper {
+    width: 90vw;
   }
 }
