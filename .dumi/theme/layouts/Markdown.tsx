@@ -5,11 +5,6 @@ import '../style/markdown.less';
 import QRcode from 'qrcode.react';
 
 const main = ({ children, theme, meta }) => {
-  console.log(
-    '%c 🍰 meta: ',
-    'font-size:20px;background-color: #FCA650;color:#fff;',
-    meta,
-  );
   const [showCode, setShowCode] = useState(false);
   const [path, setPath] = useState('');
   const [showMobile, setShowMobile] = useState(false);
