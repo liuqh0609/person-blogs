@@ -6,7 +6,7 @@ const Swiper = ({ url }) => {
     <div style={{ minHeight: 318, margin: '0 auto' }}>
       <img
         style={{ width: '100%', maxHeight: 500 }}
-        src={require('../img/banner.gif')}
+        src="http://qiniu.liuqh.cn/banner1.jpg"
       />
     </div>
   );

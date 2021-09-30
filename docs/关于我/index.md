@@ -19,13 +19,18 @@ title: 热爱
 import React from 'react';
 import me from '../../assets/lqh.jpeg';
 
-export default ()=><div style={{display: 'flex'}}>
-  <img src={me} style={{width: 200}}/>
-  <div style={{padding:'0 50px'}}>
-    <b>让我想想</b>
-    <br/>
-    <br/>
-    <p><b>...</b></p>
+export default () => (
+  <div style={{ display: 'flex' }}>
+    <img src={me} style={{ width: 200 }} />
+    <div style={{ padding: '0 50px' }}>
+      <b>让我想想</b>
+      <br />
+      <br />
+
+      <p>
+        <b>...</b>
+      </p>
+    </div>
   </div>
-</div>
+);
 ```
