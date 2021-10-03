@@ -5,6 +5,7 @@ import HomeList from '../components/ArticleCard';
 import Markdown from './Markdown';
 import About from './About';
 import Photos from './Photos';
+import Footer from '../components/Footer';
 import '../style/index.less';
 import { context } from 'dumi/theme';
 
@@ -27,6 +28,8 @@ export default ({ children, location, ...props }) => {
       )}
       {/* 文章详情页 */}
       {jumpPage(location.pathname, children, theme.markdownTheme, ctx.meta)}
+      {/* 底部 */}
+      <Footer />
     </div>
   );
 };

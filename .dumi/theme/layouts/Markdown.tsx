@@ -90,18 +90,6 @@ const main = ({ children, theme, meta }) => {
               style={{ width: 50, height: 50, top: -2 }}
             />
           </div>
-          <div className="button" onClick={handleShareQq}>
-            <img className="badge" src={require('../img/QQ.png')} alt="" />
-          </div>
-          <div className="button" onClick={showQRCodeM}>
-            <img className="badge" src={require('../img/wx.png')} alt="" />
-            {showCode ? (
-              <QRcode
-                style={{ position: 'absolute', top: -80, right: 60 }}
-                value={path}
-              />
-            ) : null}
-          </div>
         </div>
       ) : null}
     </div>
