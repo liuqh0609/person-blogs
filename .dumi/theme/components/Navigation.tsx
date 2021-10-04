@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'dumi/theme';
 import classNames from 'classnames';
 import '../style/navigation.less';
 import { isOuterLink } from '../utils/index';
 
 const Navigation = ({ routes, logo }) => {
-  const [selected, setSelected] = useState(0);
+  useEffect(() => {
+    sessionStorage.setItem('liuqh-blog', '热爱');
+  }, []);
 
+  const click = (title) => {
+    sessionStorage.setItem('liuqh-blog', title);
+  };
   return (
     <>
       {/* logo */}
@@ -26,10 +31,10 @@ const Navigation = ({ routes, logo }) => {
         {routes.map((route, index) => (
           <Link
             className={classNames({
-              actived: selected === index,
+              actived: route?.title === sessionStorage.getItem('liuqh-blog'),
               'layout-header-link': true,
             })}
-            onClick={() => setSelected(index)}
+            onClick={() => click(route?.title)}
             to={route.path}
             key={route.title}
           >
