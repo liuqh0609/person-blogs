@@ -3,9 +3,16 @@ import { width } from 'window-size';
 
 const Swiper = ({ url }) => {
   return (
-    <div style={{ minHeight: 318, margin: '0 auto' }}>
+    <div
+      style={{
+        width: '100%',
+        minHeight: 318,
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
       <img
-        style={{ width: '100%', maxHeight: 500 }}
+        style={{ width: '100%', margin: '0 auto' }}
         src="http://qiniu.liuqh.cn/banner1.jpg"
       />
     </div>

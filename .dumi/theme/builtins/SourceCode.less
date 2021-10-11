@@ -1,0 +1,116 @@
+.liuqh_code_block {
+  position: relative;
+
+  .code-block-copy-btn {
+    position: absolute;
+    top: 1.1em;
+    right: 1em;
+    display: block;
+    padding: 5px;
+    border: 0;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    transition: opacity 0.2s, background 0.2s;
+    z-index: 9;
+    color: #666;
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.9;
+    }
+
+    &[data-status='ready'] {
+      background-position: -54px 0;
+    }
+
+    &[data-status='copied'] {
+      opacity: 1;
+      pointer-events: none;
+      background-position: -54px -16px;
+    }
+  }
+}
+pre code.hljs {
+  display: block !important ;
+  overflow-x: auto !important;
+  padding: 1em !important;
+  text-shadow: none !important;
+}
+pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-shadow: none;
+}
+code.hljs {
+  padding: 3px 5px !important;
+}
+.hljs {
+  color: #abb2bf !important;
+  background: #282c34 !important;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370 !important;
+  font-style: italic !important;
+}
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword {
+  color: #c678dd !important;
+}
+.hljs-deletion,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #e06c75 !important;
+}
+.hljs-literal {
+  color: #56b6c2 !important;
+}
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: #98c379 !important;
+}
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: #d19a66 !important;
+}
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+  color: #61aeee !important;
+}
+.hljs-built_in,
+.hljs-class .hljs-title,
+.hljs-title.class_ {
+  color: #e6c07b !important;
+}
+.hljs-emphasis {
+  font-style: italic !important;
+}
+.hljs-strong {
+  font-weight: 700 !important;
+}
+.hljs-link {
+  text-decoration: underline !important;
+}

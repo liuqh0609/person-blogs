@@ -1,27 +1,10 @@
-# dumi-blog
+# 热爱's blogs
 
-## Getting Started
+> 记录学习所得，分享所见所感。欢迎关注
 
-Install dependencies,
+[点击访问博客首页](http://www.liuqh.cn)
 
-```bash
-$ npm i
-```
+本项目主要使用`dumi`来进行搭建的静态博客，主题什么的是自定义的，详情可查看`.dumi/theme`文件夹下加的内容。
 
-Start the dev server,
 
-```bash
-$ npm start
-```
-
-Build documentation,
-
-```bash
-$ npm run docs:build
-```
-
-Build library via `father-build`,
-
-```bash
-$ npm run build
-```
+![image](https://user-images.githubusercontent.com/43341115/135398247-de4a8e7d-b450-4d73-9521-186ed2a9d0c4.png)
